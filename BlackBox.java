@@ -5,16 +5,18 @@ public class BlackBox
 	public static void main(String [] args)
 	{
 		Scanner scan = new Scanner(System.in);
-		int difference = 0;
-		
-		
 		System.out.println("How many steps: ");
 		int amountOfSteps = scan.nextInt();
 		int [] steps = new int [amountOfSteps];
-		
 		System.out.println("Enter the locations: ");
+		System.out.println("The largest gap is " + readArray(scan,steps));
+	}
+	
+	static int readArray(Scanner scan, int [] steps)
+	{
+		int difference = 0;
 		
-		for(int i = 0; i < amountOfSteps; i++)
+		for(int i = 0; i < steps.length; i++)
 		{
 			if(i == 0)
 				steps[0] = scan.nextInt();
@@ -24,10 +26,7 @@ public class BlackBox
 				if(tmp > steps[i-1])
 				{
 					steps[i] = tmp;
-					if((steps[i] - steps[i-1]) > difference)
-					{
-						difference = steps[i] - steps[i-1];
-					}
+					difference = isLarger(steps[i],steps[i-1], difference);
 				}
 				
 				else
@@ -39,8 +38,21 @@ public class BlackBox
 			
 		}
 		
-		System.out.println("The largest gap is " + difference);
+		return difference;
+	}
 	
+	static int isLarger(int a, int b, int originalDifference)
+	{
+		int newDifference = a-b;
+		if(newDifference > originalDifference)
+		{
+			return newDifference;
+		}
+		
+		else
+		{
+			return originalDifference;
+		}
 	}
 	
 }
