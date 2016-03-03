@@ -1,3 +1,6 @@
+//strings a problem
+//negatives a problem in amount of steps and what numbers are added to ladder
+
 import java.util.Scanner;
 
 public class BlackBox
@@ -6,7 +9,7 @@ public class BlackBox
 	{
 		Scanner scan = new Scanner(System.in);
 		System.out.println("How many steps: ");
-		int amountOfSteps = scan.nextInt();
+		int amountOfSteps = getSteps(scan);
 		int [] steps = new int [amountOfSteps];
 		System.out.println("Enter the locations: ");
 		System.out.println("The largest gap is " + readArray(scan,steps));
@@ -19,10 +22,22 @@ public class BlackBox
 		for(int i = 0; i < steps.length; i++)
 		{
 			if(i == 0)
+			{
 				steps[0] = scan.nextInt();
+				while (steps[0] < 0)
+				{
+					System.out.println("Enter a number greater than 0");
+					steps[0] = scan.nextInt();
+				}
+			}
 			else
 			{
 				int tmp = scan.nextInt();
+				while (tmp < 0)
+				{
+					System.out.println("Enter a number greater than 0");
+					tmp = scan.nextInt();
+				}
 				if(tmp > steps[i-1])
 				{
 					steps[i] = tmp;
@@ -53,6 +68,18 @@ public class BlackBox
 		{
 			return originalDifference;
 		}
+	}
+	
+	static int getSteps(Scanner scan)
+	{
+		int tmp = scan.nextInt();
+		while (tmp < 0)
+		{
+			System.out.println("Enter a number greater than 0");
+			tmp = scan.nextInt();
+		}
+		
+		return tmp;
 	}
 	
 }
