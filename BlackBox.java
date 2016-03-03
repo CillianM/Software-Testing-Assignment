@@ -1,6 +1,3 @@
-//strings a problem
-//negatives a problem in amount of steps and what numbers are added to ladder
-
 import java.util.Scanner;
 
 public class BlackBox
