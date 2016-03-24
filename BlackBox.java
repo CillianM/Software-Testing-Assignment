@@ -75,7 +75,7 @@ public class BlackBox
 	static int getAmountOfSteps(Scanner scan)
 	{
 		int tmp = scan.nextInt();
-		while (tmp <= 0)
+		while (tmp <= 0)  // just return int? Remove loop
 		{
 			System.out.println("Enter a number greater than 0");
 			tmp = scan.nextInt();
