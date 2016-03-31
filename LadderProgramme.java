@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
-public class BlackBox
+public class LadderProgramme //renamed from group name as it was confusing
 {
 	public static void main(String [] args)
 	{
 		Scanner scan = new Scanner(System.in);
 		System.out.println("How many steps: ");
-		int amountOfSteps = getAmountOfSteps(scan);
+		int amountOfSteps = scan.nextInt(); // just get int over method for simplified flow control
 		int [] steps = new int [amountOfSteps];
 		System.out.println("Enter the locations: ");
 		System.out.println("The largest gap is " + readInLadder(scan,steps));
@@ -72,16 +72,6 @@ public class BlackBox
 		}
 	}
 	
-	static int getAmountOfSteps(Scanner scan)
-	{
-		int tmp = scan.nextInt();
-		while (tmp <= 0)  // just return int? Remove loop
-		{
-			System.out.println("Enter a number greater than 0");
-			tmp = scan.nextInt();
-		}
-		
-		return tmp;
-	}
+	//get amount of steps removed for simplified flow control
 	
 }
