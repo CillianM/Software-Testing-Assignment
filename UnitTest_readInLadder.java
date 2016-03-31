@@ -2,14 +2,27 @@ import java.util.Scanner;
 public class UnitTest_readInLadder
 {
 	//This is the driver for the unit test
-	public static void main()
+	public static void main(String [] args)
 	{
 		Scanner scan = new Scanner(System.in);
 		//Test case (input size of the array)
 		int n = scan.nextInt();
-		int myArray[n];
+		int[] myArray = new int[5];
+		
+		//Call to method under test 
+		System.out.println(readInLadder(scan, myArray));
 
-		readInLadder(scan, myArray);
+		/*
+		System.out.println("Array now has: ");
+		
+		//Show array created
+		{
+			for(int i = 0; i < myArray.length; i++)
+			{
+				System.out.println(myArray[i]);
+			}
+		}
+		*/
 
 	}
 
@@ -44,7 +57,7 @@ public class UnitTest_readInLadder
 				if(tmp > steps[i-1])
 				{
 					steps[i] = tmp;
-					difference = isLarger(steps[i],steps[i-1], difference);
+					difference = stub_isLarger(steps[i],steps[i-1], difference);
 				}
 				
 				else
@@ -57,7 +70,14 @@ public class UnitTest_readInLadder
 			
 		}
 		
+		//difference value should always return 10 if it goes throguh everything correctly
 		return difference;
+	}
+
+	//Stub to return a dummy difference value
+	static int stub_isLarger(int a, int b, int originalDifference)
+	{
+		return 10;
 	}
 	
 }
