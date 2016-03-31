@@ -79,7 +79,7 @@ public class UnitTest_readInLadder
 	//Stub to return a dummy difference value
 	static int stub_isLarger(int a, int b, int originalDifference)
 	{
-		return 10;
+		return 1;
 	}
 	
 }
