@@ -6,14 +6,15 @@ public class UnitTest_readInLadder
 	{
 		Scanner scan = new Scanner(System.in);
 		//Test case (input size of the array)
+		System.out.println("Enter the size of the array: ");
 		int n = scan.nextInt();
-		int[] myArray = new int[5];
+		int[] myArray = new int[n];
 		
 		//Call to method under test 
-		System.out.println(readInLadder(scan, myArray));
+		int diff = readInLadder(scan, myArray);
 
-		/*
-		System.out.println("Array now has: ");
+		
+		System.out.println("Array (Ladder) now has: ");
 		
 		//Show array created
 		{
@@ -22,7 +23,8 @@ public class UnitTest_readInLadder
 				System.out.println(myArray[i]);
 			}
 		}
-		*/
+		
+		System.out.println("The largest difference is (stub value for islarger(): " + diff);
 
 	}
 
