@@ -8,7 +8,7 @@ public class UnitTest_isLarger {
 		int one = scan.nextInt();
 		System.out.println("Enter a second number which is larger than the first:");
 		int two = scan.nextInt();
-		System.out.println("Enter a number representing a difference to be tested:");
+		System.out.println("Enter a number representing a difference to be tested against:");
 		int difference = scan.nextInt();
 		System.out.println("The larger difference is " + isLarger(one,two,difference));
 	}
