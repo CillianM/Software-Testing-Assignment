@@ -6,7 +6,7 @@ public class UnitTest_isLarger {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter a number:");
 		int one = scan.nextInt();
-		System.out.println("Enter a second number which is larger than the first:");
+		System.out.println("Enter a second number which is smaller than the first:");
 		int two = scan.nextInt();
 		System.out.println("Enter a number representing a difference to be tested against:");
 		int difference = scan.nextInt();
