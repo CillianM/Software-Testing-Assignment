@@ -46,12 +46,14 @@ road("19", finish, 1).
 road(start, a, 1).
 road(a, b, 1).
 road(a, end, 1).
+road(b, aLoop, 1).
+road(b, end, 1).
+road(a, e, 1).
 road(aLoop, end, 1).
 road(b, c, 1).
 road(c, d, 1).
 road(d, cLoop, 1).
 road(cLoop, aLoop, 1).
-road(b, e, 1).
 road(e, f, 1).
 road(f, eLoop, 1).
 road(eLoop, g, 1).
@@ -89,45 +91,21 @@ shortest(StartTown, EndTown, Route, NDist) :-
 /**Usage as follows "route(start, finish, R, N)."
     Where R = Route taken
           N = Node cost
-
-    [1] 14 ?- route(start,end , R, N).
+    route(start,end , R, N).
     R = [start, a, end],
     N = 2 ;
+    R = [start, a, b, end],
+    N = 3 ;
+    R = [start, a, b, aLoop, end],
+    N = 4 ;
     R = [start, a, b, c, d, cLoop, aLoop, end],
     N = 7 ;
-    R = [start, a, b, e, f, eLoop, g, aLoop, end],
-    N = 8 ;
-    R = [start, a, b, e, f, eLoop, g, h, i, aLoop, end],
-    N = 10 ;
-    R = [start, a, b, e, f, eLoop, g, h, j, aLoop, end],
-    N = 10 ;
-    false.
-
-
-    R = [start, "1", "2", "3", "4", "5", "6", "7", "8", "7Loop", "4Loop", "19", finish],
-    N = 12 ;
-    R = [start, "1", "2", "3", "4", "5", "9", "10", "11", "10Loop", "12", "18", "4Loop", "19", finish],
-    N = 14 ;
-    R = [start, "1", "2", "3", "4", "5", "9", "10", "11", "10Loop", "12", "13", "14", "15", "16", "4Loop", "19", finish],
-    N = 17 ;
-    R = [start, "1", "2", "3", "4", "5", "9", "10", "11", "10Loop", "12", "13", "14", "15", "17", "4Loop", "19", finish],
-    N = 17 ;
-    R = [start, "1", "2", "3", "4", "5", "9", "10", "12", "18", "4Loop", "19", finish],
-    N = 12 ;
-    R = [start, "1", "2", "3", "4", "5", "9", "10", "12", "13", "14", "15", "16", "4Loop", "19", finish],
-    N = 15 ;
-    R = [start, "1", "2", "3", "4", "5", "9", "10", "12", "13", "14", "15", "17", "4Loop", "19", finish],
-    N = 15 ;
-
-
-    [1] 12 ?- shortest(start, finish, R, N).
-    R = [start, "1", "2", "3", "4", "19", finish],    This will only result if ladder of size 0 is entered is read in.
-    N = 6.
-
-    Actual shortest logical path
-    [1] 14 ?- shortest(start, finish, R, N).
-    R = [start, "1", "2", "3", "4", "5", "9", "10", "12", "18", "4Loop", "19", finish],
-    N = 12.
+    R = [start, a, e, f, eLoop, g, aLoop, end],
+    N = 7 ;
+    R = [start, a, e, f, eLoop, g, h, i, aLoop, end],
+    N = 9 ;
+    R = [start, a, e, f, eLoop, g, h, j, aLoop, end],
+    N = 9 ;
 
 
 */
