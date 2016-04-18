@@ -12,78 +12,78 @@
 
 
 /** 
-road(start, "1", 1).
-road("1", "2", 1).
-road("2", "3", 1).
-road("3", "4", 1).
-road("4", "5", 1).
-%road("4", "19", 1). %comment this one out to generate 2nd shortest route
-road("4Loop", "19", 1).
-road("5", "6", 1).
-road("5", "9", 1).
-road("6", "7", 1).
-road("7", "8", 1).
-road("8", "7Loop", 1).
-road("7Loop", "4Loop", 1).
-road("9", "10", 1). 
-road("10", "11", 1).
-road("11", "10Loop", 1).
-road("10", "12", 1).
-road("10Loop", "12", 1). 
-road("12", "18", 1).
-road("18", "4Loop", 1).
-road("12", "13", 1).
-road("13", "14", 1).
-road("14", "15", 1).
-road("15", "16", 1).
-road("16", "4Loop", 1).
-road("15", "17", 1).
-road("17", "4Loop", 1).  
-road("19", finish, 1).
+path(start, "1", 1).
+path("1", "2", 1).
+path("2", "3", 1).
+path("3", "4", 1).
+path("4", "5", 1).
+%path("4", "19", 1). %comment this one out to generate 2nd shortest route
+path("4Loop", "19", 1).
+path("5", "6", 1).
+path("5", "9", 1).
+path("6", "7", 1).
+path("7", "8", 1).
+path("8", "7Loop", 1).
+path("7Loop", "4Loop", 1).
+path("9", "10", 1). 
+path("10", "11", 1).
+path("11", "10Loop", 1).
+path("10", "12", 1).
+path("10Loop", "12", 1). 
+path("12", "18", 1).
+path("18", "4Loop", 1).
+path("12", "13", 1).
+path("13", "14", 1).
+path("14", "15", 1).
+path("15", "16", 1).
+path("16", "4Loop", 1).
+path("15", "17", 1).
+path("17", "4Loop", 1).  
+path("19", finish, 1).
 **/
 
 
-road(start, a, 1).
-road(a, b, 1).
-road(a, end, 1).
-road(b, aLoop, 1).
-road(b, end, 1).
-road(a, e, 1).
-road(aLoop, end, 1).
-road(b, c, 1).
-road(c, d, 1).
-road(d, cLoop, 1).
-road(cLoop, aLoop, 1).
-road(e, f, 1).
-road(f, eLoop, 1).
-road(eLoop, g, 1).
-road(g, aLoop, 1).
-road(g, h, 1).
-road(h, i, 1).
-road(h, j, 1).
-road(i, aLoop, 1).
-road(j, aLoop, 1).
+path(start, a, 1).
+path(a, b, 1).
+path(a, end, 1).
+path(b, aLoop, 1).
+path(b, end, 1).
+path(a, e, 1).
+path(aLoop, end, 1).
+path(b, c, 1).
+path(c, d, 1).
+path(d, cLoop, 1).
+path(cLoop, aLoop, 1).
+path(e, f, 1).
+path(f, eLoop, 1).
+path(eLoop, g, 1).
+path(g, aLoop, 1).
+path(g, h, 1).
+path(h, i, 1).
+path(h, j, 1).
+path(i, aLoop, 1).
+path(j, aLoop, 1).
 
 
 
 %function route to calculate all possible routes from facts above
-route(StartTown, EndTown, Route, NDist) :-                              
-    route(StartTown, EndTown, [StartTown], 0, Route, NDist). 
+route(StartNode, EndNode, Route, NDist) :-                              
+    route(StartNode, EndNode, [StartNode], 0, Route, NDist). 
     
-route(StartTown, EndTown, Visited, DistAcc, Route, NDist) :-    
-    road(StartTown, EndTown, Dist),                                     
-    reverse([EndTown|Visited] , Route),                                               
+route(StartNode, EndNode, Visited, DistAcc, Route, NDist) :-    
+    path(StartNode, EndNode, Dist),                                     
+    reverse([EndNode|Visited] , Route),                                               
     NDist is DistAcc + Dist.                                
         
-route(StartTown, EndTown, Visited, DistAcc, Route, NDist) :-
-    road(StartTown, Midpoint, Dist),
+route(StartNode, EndNode, Visited, DistAcc, Route, NDist) :-
+    path(StartNode, Midpoint, Dist),
     not(member(Midpoint, Visited)),                                                         
     NewDistAcc is DistAcc + Dist,                                            
-    route(Midpoint, EndTown, [Midpoint|Visited], NewDistAcc, Route, NDist).  
+    route(Midpoint, EndNode, [Midpoint|Visited], NewDistAcc, Route, NDist).  
 
 %returns shortest route from list of ordered routes.    
-shortest(StartTown, EndTown, Route, NDist) :-
-    setof((NDist, Route), route(StartTown, EndTown, Route, NDist), [(NDist, Route)|_]).    
+shortest(StartNode, EndNode, Route, NDist) :-
+    setof((NDist, Route), route(StartNode, EndNode, Route, NDist), [(NDist, Route)|_]).    
     
 
 
