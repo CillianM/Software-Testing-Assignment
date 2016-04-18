@@ -5,7 +5,7 @@ public class DpathLadder
 	Scanner scan = new Scanner(System.in);
 	String ddPath  = "Start";
 
-	public Ladder(int [] ladder)
+	public DpathLadder(int [] ladder)
 	{
 		this.steps = ladder;
 	}
