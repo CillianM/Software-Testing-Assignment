@@ -15,7 +15,6 @@ public class IntegrationTest_isLarger_And_readInLadderPlus
 			int[] myArray = new int[n];
 			
 			//Call to one of the methods under test 
-			System.out.println("Enter the elements in the array: ");
 			int diff = readInLadder(scan, myArray);
 
 			
