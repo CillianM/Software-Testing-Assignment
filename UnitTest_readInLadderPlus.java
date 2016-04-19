@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-public class UnitTest_readInLadder
+public class UnitTest_readInLadderPlus
 {
 	//This is the driver for the unit test
 	public static void main(String [] args)
